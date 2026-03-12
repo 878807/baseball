@@ -1,41 +1,30 @@
-# Prerequisites
-*.d
+# 編輯器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
 
-# Precompiled Headers
-*.gch
-*.pch
+# 本地環境
+.env
+.env.local
+.env.*.local
 
-# Linker files
-*.ilk
+# 構建輸出
+dist/
+build/
+*.zip
 
-# Debugger Files
-*.pdb
+# IDE 特定文件
+*.sublime-project
+*.sublime-workspace
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# debug information files
-*.dwo
+# 系統文件
+Thumbs.db
+.directory

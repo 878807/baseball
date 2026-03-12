@@ -1,70 +1,33 @@
-// 照片集合（存儲在本地存儲中）
+// 前台展示系統 JavaScript
+// 照片和球員集合（存儲在本地存儲中）
 let photos = [];
+let players = [];
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
     loadPhotos();
+    loadPlayers();
     setupEventListeners();
 });
 
-// 設置事件監聽器
+// 設置事件監聽器（前台只有聯絡表單）
 function setupEventListeners() {
-    const photoForm = document.getElementById('photoForm');
     const contactForm = document.getElementById('contactForm');
-
-    if (photoForm) {
-        photoForm.addEventListener('submit', handlePhotoUpload);
-    }
 
     if (contactForm) {
         contactForm.addEventListener('submit', handleContactSubmit);
     }
 }
 
-// 處理照片上傳
-function handlePhotoUpload(e) {
-    e.preventDefault();
-
-    const title = document.getElementById('photoTitle').value;
-    const description = document.getElementById('photoDescription').value;
-    const fileInput = document.getElementById('photoFile');
-    const file = fileInput.files[0];
-
-    if (!file) {
-        alert('請選擇一張照片');
-        return;
-    }
-
-    // 讀取檔案
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const photo = {
-            id: Date.now(),
-            title: title,
-            description: description,
-            image: event.target.result, // Base64 編碼的圖像
-            date: new Date().toLocaleDateString('zh-TW')
-        };
-
-        photos.push(photo);
-        savePhotos();
-        displayPhotos();
-        
-        // 重置表單
-        document.getElementById('photoForm').reset();
-        alert('照片已成功上傳！');
-    };
-    reader.readAsDataURL(file);
-}
+// ============ 照片展示功能 ============
 
 // 保存照片到本地存儲
 function savePhotos() {
-    // 注意：本地存儲有大小限制（通常為 5-10 MB）
     try {
         localStorage.setItem('baseballPhotos', JSON.stringify(photos));
     } catch (e) {
         if (e.name === 'QuotaExceededError') {
-            alert('存儲空間已滿，無法保存更多照片。請刪除一些舊照片。');
+            console.error('存儲空間已滿');
         }
     }
 }
@@ -83,12 +46,14 @@ function loadPhotos() {
     }
 }
 
-// 顯示照片集
+// 顯示照片集（前台只顯示，不可編輯）
 function displayPhotos() {
     const gallery = document.getElementById('photoGallery');
     
+    if (!gallery) return; // 後台沒有 photoGallery
+    
     if (photos.length === 0) {
-        gallery.innerHTML = '<p class="no-photos">暫時還沒有照片。上傳第一張照片吧！</p>';
+        gallery.innerHTML = '<p class="no-photos">暫時還沒有照片。</p>';
         return;
     }
 
@@ -99,21 +64,62 @@ function displayPhotos() {
                 <h3>${photo.title}</h3>
                 <p>${photo.description}</p>
                 <div class="photo-date">上傳日期：${photo.date}</div>
-                <button class="delete-btn" onclick="deletePhoto(${photo.id})">刪除</button>
             </div>
         </div>
     `).join('');
 }
 
-// 刪除照片
-function deletePhoto(id) {
-    if (confirm('確定要刪除這張照片嗎？')) {
-        photos = photos.filter(photo => photo.id !== id);
-        savePhotos();
-        displayPhotos();
-        alert('照片已刪除');
+// ============ 球員展示功能 ============
+
+// 保存球員到本地存儲
+function savePlayers() {
+    try {
+        localStorage.setItem('baseballPlayers', JSON.stringify(players));
+    } catch (e) {
+        if (e.name === 'QuotaExceededError') {
+            alert('存儲空間已滿，無法保存更多球員。');
+        }
     }
 }
+
+// 加載球員
+function loadPlayers() {
+    const stored = localStorage.getItem('baseballPlayers');
+    if (stored) {
+        try {
+            players = JSON.parse(stored);
+            displayPlayers();
+        } catch (e) {
+            console.error('加載球員時出錯', e);
+            players = [];
+        }
+    }
+}
+
+// 顯示球隊成員
+function displayPlayers() {
+    const teamGrid = document.getElementById('teamGrid');
+    
+    if (!teamGrid) return;
+    
+    if (players.length === 0) {
+        teamGrid.innerHTML = '<p class="no-players">暫時還沒有球員。</p>';
+        return;
+    }
+
+    teamGrid.innerHTML = players.map(player => `
+        <div class="team-member">
+            ${player.photo ? `<img src="${player.photo}" alt="${player.name}" class="player-avatar">` : ''}
+            <h3>${player.name}</h3>
+            <div class="position">${player.position}</div>
+            <p>${player.description || '（暫無描述）'}</p>
+
+        </div>
+    `).join('');
+}
+
+
+// ============ 聯絡表單功能 ============
 
 // 處理聯絡表單
 function handleContactSubmit(e) {

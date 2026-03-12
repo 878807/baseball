@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>棒球隊介紹</title>
+    <title>威焺科技隊 - 官方網站</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>威焺科技</h1>
-            <p class="tagline">我們的棒球隊紀錄</p>
+            <h1>威昇科技</h1>
+            <p class="tagline">社子島A組棒球舞台上的拚戰精神</p>
         </div>
     </header>
 
@@ -20,6 +20,7 @@
             <a href="#gallery">相片集</a>
             <a href="#team">球隊成員</a>
             <a href="#contact">聯絡我們</a>
+            <a href="admin.html" class="admin-link">後台管理</a>
         </div>
     </nav>
 
@@ -27,7 +28,7 @@
         <!-- 關於我們 -->
         <section id="about" class="section">
             <h2>關於我們</h2>
-            <p>社子島棒球隊的前身為「野球瘋子」，由一群熱愛棒球的人員所組成。球隊成立以來，始終以對棒球的熱情與團隊精神為核心，長期在社子島 A 組賽事中出賽與競技。</p>
+            <p>歡迎來到威焺科技隊的官方網站！我們的球隊前身為「野球瘋子」，由一群熱愛棒球的人員所組成。球隊成立以來，始終以對棒球的熱情與團隊精神為核心，長期在社子島 A 組賽事中出賽與競技。</p>
             <p>隊員們來自不同背景，但都因對棒球的熱愛而聚在一起，在比賽中彼此合作、共同成長。多年來，球隊不僅累積了豐富的比賽經驗，也建立了深厚的團隊默契，持續在社子島棒球舞台上展現拚戰精神。</p>
         </section>
 
@@ -35,50 +36,18 @@
         <section id="gallery" class="section">
             <h2>相片集</h2>
             
-            <div class="photo-upload">
-                <h3>新增照片</h3>
-                <form id="photoForm">
-                    <div class="form-group">
-                        <label for="photoTitle">照片標題：</label>
-                        <input type="text" id="photoTitle" placeholder="例如：2026年春季賽" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="photoDescription">照片說明：</label>
-                        <textarea id="photoDescription" placeholder="描述這張照片..." rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="photoFile">選擇照片：</label>
-                        <input type="file" id="photoFile" accept="image/*" required>
-                    </div>
-                    <button type="submit" class="btn">上傳照片</button>
-                </form>
-            </div>
-
             <div id="photoGallery" class="photo-gallery">
-                <p class="no-photos">暫時還沒有照片。上傳第一張照片吧！</p>
+                <p class="no-photos">暫時還沒有照片。</p>
             </div>
         </section>
 
         <!-- 球隊成員 -->
         <section id="team" class="section">
             <h2>球隊成員</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <h3>教練：李明</h3>
-                    <p>經驗豐富的棒球教練，帶領球隊多年。</p>
-                </div>
-                <div class="team-member">
-                    <h3>隊長：張偉</h3>
-                    <p>堅實的防守者和領導者。</p>
-                </div>
-                <div class="team-member">
-                    <h3>投手：王強</h3>
-                    <p>精準的投球和堅強的意志力。</p>
-                </div>
-                <div class="team-member">
-                    <h3>外野手：陳飛</h3>
-                    <p>快速的反應和卓越的爆發力。</p>
-                </div>
+            
+            <div id="teamGrid" class="team-grid">
+                <!-- 球員將動態加載到這裡 -->
+                <p class="no-players">暫時還沒有球員。</p>
             </div>
         </section>
 
@@ -106,11 +75,10 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 勇士隊。版權所有。通過 GitHub Pages 托管。</p>
+            <p>&copy; 2026 威昇科技。版權所有。通過 GitHub Pages 托管。</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
