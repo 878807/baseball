@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>棒球隊介紹</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚾ 勇士隊</h1>
+            <p class="tagline">我們的棒球隊紀錄</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#about">關於我們</a>
+            <a href="#gallery">相片集</a>
+            <a href="#team">球隊成員</a>
+            <a href="#contact">聯絡我們</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- 關於我們 -->
+        <section id="about" class="section">
+            <h2>關於我們</h2>
+            <p>歡迎來到勇士隊的官方網站！我們是一支充滿熱情和決心的棒球隊。自成立以來，我們始終致力於提升棒球技能和團隊精神。</p>
+            <p>我們的目標是培養年輕球員，推廣棒球運動，並在每場比賽中展現最好的表現。</p>
+        </section>
+
+        <!-- 相片集 -->
+        <section id="gallery" class="section">
+            <h2>相片集</h2>
+            
+            <div class="photo-upload">
+                <h3>新增照片</h3>
+                <form id="photoForm">
+                    <div class="form-group">
+                        <label for="photoTitle">照片標題：</label>
+                        <input type="text" id="photoTitle" placeholder="例如：2026年春季賽" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="photoDescription">照片說明：</label>
+                        <textarea id="photoDescription" placeholder="描述這張照片..." rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="photoFile">選擇照片：</label>
+                        <input type="file" id="photoFile" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn">上傳照片</button>
+                </form>
+            </div>
+
+            <div id="photoGallery" class="photo-gallery">
+                <p class="no-photos">暫時還沒有照片。上傳第一張照片吧！</p>
+            </div>
+        </section>
+
+        <!-- 球隊成員 -->
+        <section id="team" class="section">
+            <h2>球隊成員</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>教練：李明</h3>
+                    <p>經驗豐富的棒球教練，帶領球隊多年。</p>
+                </div>
+                <div class="team-member">
+                    <h3>隊長：張偉</h3>
+                    <p>堅實的防守者和領導者。</p>
+                </div>
+                <div class="team-member">
+                    <h3>投手：王強</h3>
+                    <p>精準的投球和堅強的意志力。</p>
+                </div>
+                <div class="team-member">
+                    <h3>外野手：陳飛</h3>
+                    <p>快速的反應和卓越的爆發力。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 聯絡我們 -->
+        <section id="contact" class="section">
+            <h2>聯絡我們</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">姓名：</label>
+                    <input type="text" id="name" placeholder="您的姓名" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">電郵：</label>
+                    <input type="email" id="email" placeholder="您的電郵" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">訊息：</label>
+                    <textarea id="message" placeholder="您的訊息..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">發送訊息</button>
+                <p id="contactMessage"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 勇士隊。版權所有。通過 GitHub Pages 托管。</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
